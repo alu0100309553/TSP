@@ -25,7 +25,7 @@ public class Grafo {
       String [] temp;
       temp = reader.readLine ().split("[^\\d]+");
       setNum_nodos(Integer.parseInt(temp[0]));
-      distancias = new int [getNum_nodos()][getNum_nodos()];
+      distancias = new int [getNum_nodos()+1][getNum_nodos()+1];
       for (int i = 0; i< getNum_nodos(); i++){
     	  for (int j = 0; j< getNum_nodos(); j++){
     		  if (i==j){
