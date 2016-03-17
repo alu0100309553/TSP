@@ -25,11 +25,21 @@ public class Grafo {
       String [] temp;
       temp = reader.readLine ().split("[^\\d]+");
       setNum_nodos(Integer.parseInt(temp[0]));
-      int [][] aux = new int [getNum_nodos()][getNum_nodos()];
-      for (int i = 0)
+      distancias = new int [getNum_nodos()][getNum_nodos()];
+      for (int i = 0; i< getNum_nodos(); i++){
+    	  for (int j = 0; j< getNum_nodos(); j++){
+    		  if (i==j){
+    			  setDistancias(i, j, 0);
+    		  }
+    		  else{
+    			  setDistancias(i, j, MAX_DIST);  
+    		  }  
+          }
+      }
       while (reader.ready()) {
         temp = reader.readLine ().split("[^\\d]+");
         setDistancias(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
+        setDistancias(Integer.parseInt(temp[1]), Integer.parseInt(temp[0]), Integer.parseInt(temp[2]));
       }
       reader.close();
     }catch (Exception e){
