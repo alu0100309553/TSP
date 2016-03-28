@@ -16,18 +16,21 @@ public class Grafo {
   public int[][] getDistancias() {
     return distancias;
   }
-  public void setDistancias(int x, int y, int dist) {
-    distancias[x][y] = dist;
+  public int getDistancia(int origen, int destino) {
+    return distancias[origen][destino];
   }
-  Grafo (String filename) {
+  public void setDistancias(int x, int y, int dist) {
+    distancias[x-1][y-1] = dist;
+  }
+  public Grafo (String filename) {
     try{
       BufferedReader reader = new BufferedReader( new FileReader(filename));
       String [] temp;
       temp = reader.readLine ().split("[^\\d]+");
       setNum_nodos(Integer.parseInt(temp[0]));
-      distancias = new int [getNum_nodos()+1][getNum_nodos()+1];
-      for (int i = 0; i< getNum_nodos(); i++){
-    	  for (int j = 0; j< getNum_nodos(); j++){
+      distancias = new int [getNum_nodos()][getNum_nodos()];
+      for (int i = 1; i<= getNum_nodos(); i++){
+    	  for (int j = 1; j<= getNum_nodos(); j++){
     		  if (i==j){
     			  setDistancias(i, j, 0);
     		  }
